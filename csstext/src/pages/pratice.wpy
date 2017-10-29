@@ -1,0 +1,152 @@
+<style>
+.view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-color: #EEFFBB;
+  margin-top: 20px;
+}
+.line {
+  background-color: #DDDDDD;
+  height: 0.5px;
+  width: 100%;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+}
+.head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+.check1 {
+  color: #00DDDD;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 4px;
+  width: 15px;
+  height: 8px;
+  border-bottom: solid 1px currentColor;
+  border-left: solid 1px currentColor;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.check2 {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 100px;
+  width: 20px;
+  height: 10px;
+  border-left: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+.point {
+  width: 2px;
+  height: 8px;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  margin-left: 30px;
+}
+.search1 {
+  position: absolute;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  margin-left: 100px;
+}
+.search2 {
+  /* position: absolute; */
+  content: '';
+  width: 30px;
+  height: 20px;
+  /* border: 3px solid currentColor; */
+  border-right: 3px solid currentColor;
+  /* border-left: 3px solid currentColor;
+  border-bottom: 3px solid currentColor; */
+  margin-left: 100px;
+  transform: rotate(-42deg);
+  transform-origin: 30px 20px;
+}
+.search11 {
+  position: absolute;
+  margin-top: 2px;
+  margin-left: 3px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid currentColor;
+  border-radius: 100%;
+  transform: rotate(-45deg);
+  margin-left: 100px;
+}
+.search22 {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  height: 6px;
+  width: 1px;
+  /* background-color: currentColor; */
+}
+</style>
+
+<template>
+  <view>
+    <view class="info">
+      <image class="head" src="{{avatarUrl}}"></image>
+      <text>{{nickName}}</text>
+      <view class="line"></view>
+      <view class="line"></view>
+    </view>
+    <view class="view">
+      <text>对号</text>
+      <view class="check1"></view>
+    </view>
+    <view class="view">
+      <text>对号</text>
+      <view class="check2"></view>
+    </view>
+    <view class="view">
+      <text>点</text>
+      <view class="point"></view>
+    </view>
+    <view class="view">
+      <view>搜索</view>
+      <view class="search1"></view>
+      <view class="search2"></view>
+    </view>
+    <view class="view">
+      <view>搜索</view>
+      <view class="search11"></view>
+      <view class="search22"></view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Pratice extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的游戏'
+    }
+    data = {
+      avatarUrl: '',
+      nickName: ''
+    }
+    onLoad() {
+      let self = this
+      wepy.getUserInfo({
+        success: function(res) {
+          self.nickName = res.userInfo.nickName
+          self.avatarUrl = res.userInfo.avatarUrl
+        }
+      })
+    }
+  }
+</script>
