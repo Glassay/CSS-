@@ -1,19 +1,97 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="./carton.css">
-<head>
-  <meta name="description" content="3D盒子">
-    <meta charset="utf-8">
-    <title>旋转立方体</title>
-</head>
-<body>
-  <div class="stage">
-    <div class="container">
-      <div class="side top">上</div>
-      <div class="side bottom">下</div>
-      <div class="side left">左</div>
-      <div class="side right">右</div>
-      <div class="side front">前</div>
-      <div class="side back">后</div>
+<html>
+  <style>
+    .stage {
+      width: 400px;
+      position: relative;
+    }
+    .container {
+      width: 450px;
+      height: 450px;
+      transform-style: preserve-3d;
+      animation: rotate-frame 8s infinite linear;
+      transform: 50% 50% 75px;
+      transform: rotateZ(20deg);
+      transform: rotateX(30deg);
+    }
+    .side {
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      box-shadow: inset 0 0 20px rgba(105, 16, 16, 0.9);
+      text-align: center;
+      line-height: 150px;
+    }
+    .back {
+      top: 150px;
+      left: 150px;
+      background-color: #FFDDAA;
+    }
+    .front {
+      background-color: #CCEEFF;
+      left: 150px;
+      top: 150px;
+      /* perspective: 150px; */
+    }
+    .right {
+      top: 150px;
+      left: 300px;
+      background-color: #CCDDFF;
+      transform-origin: left;
+      transform: rotateY(-90deg);
+    }
+    .left {
+      top: 150px;
+      background-color: #CCCCFF;
+      transform-origin: right;
+      transform: rotateY(90deg);
+    }
+    .top {
+      left: 150px;
+      background-color: #BBFFEE;
+      transform-origin: bottom;
+      transform: rotateX(-90deg);
+    }
+    .bottom {
+      top: 300px;
+      left: 150px;
+      transform-origin: top;
+      transform: rotateX(90deg);
+    }
+    @keyframes rotate-frame{
+      0% {
+        transform: rotateX(0deg);
+      }
+      25% {
+        transform: rotateX(180deg);
+      }
+      50% {
+        transform: rotateX(360deg) rotateY(0deg);
+      }
+      75% {
+        transform: rotateX(360deg) rotateY(180deg);
+      }		
+      100% {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="./carton.css">
+  <head>
+    <meta name="description" content="3D盒子">
+      <meta charset="utf-8">
+      <title>旋转立方体</title>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="container">
+        <div class="side top">上</div>
+        <div class="side bottom">下</div>
+        <div class="side left">左</div>
+        <div class="side right">右</div>
+        <div class="side front">前</div>
+        <div class="side back">后</div>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
+</html>
