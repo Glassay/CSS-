@@ -1,0 +1,64 @@
+/* 2018-04-05 Jifeng Cheng */
+
+article, aside, figure, figcaption, footer, header, hgroup, nav, section, summary { 
+  display: block; 
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  background-color: black;
+}
+
+body {
+  font-size: medium;
+  font-family: "Helvetica","Hiragino Sans GB","Microsoft Yahei", sans-serif;
+}
+
+.footerName, .headerName {
+  /* font-size: 30px; */
+  text-align: center;
+  color: white;
+}
+
+.sideBar {
+  float: left;
+  width: 250px;
+  margin-right: -100%;
+  background-color: thistle;
+}
+
+.outContent {
+  float: right;
+  width: 100%;
+}
+
+.content {
+  padding: 20px;
+  margin-left: 280px;
+  min-height: 500px;
+}
+
+footer {
+  background-color: black;
+  clear: both;
+}
+
+@media (max-width: 800px) {
+  .outContent {
+    float: none;
+    width: auto;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .sideBar {
+    float: none;
+    width: auto;
+  }
+}
