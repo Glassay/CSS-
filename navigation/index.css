@@ -1,0 +1,53 @@
+/* 2018-04-09 Jifeng Cheng */
+
+ul {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  transform: translate(-50%, -50%);
+}
+
+li {
+  list-style: none;
+  position: relative;
+  padding: 20px;
+  font-size: 24px;
+  /* color: #000; */
+  background-image: linear-gradient(to right, deeppink, dodgerblue);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1;
+  transition: 0.2s all linear;
+  cursor: pointer;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 100%;
+  border-bottom: 2px solid #000;
+  transition: 0.2s all linear;
+}
+
+li:hover::before {
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition-delay: 0.1s;
+  border-bottom-color: #000;
+}
+
+li:hover~li::before {
+  left: 0;
+}
+
+li:active {
+  background-color: #000;
+  color: #fff;
+}
