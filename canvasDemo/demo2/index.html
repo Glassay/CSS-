@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>从线段开始</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+
+      // 规划阶段
+      context.moveTo(100, 100); // 移动画笔, 从 canvas 的左上角开是到 (100, 100)
+      context.lineTo(600, 600); // 画笔的停止点
+      context.lineWidth = 5; // 画笔的宽度
+      context.strokeStyle = "#AA394C"; // 设置画笔的颜色
+
+      // 确定绘制阶段
+      context.stroke(); // 进行描边绘制
+    }
+  </script>
+</body>
+</html>

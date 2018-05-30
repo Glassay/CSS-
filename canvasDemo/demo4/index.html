@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>绘制颜色不同的折线</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+      <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+        你的浏览器不支持 canvas , 快换个吧！
+      </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+
+      context.beginPath(); // 避免重新绘制
+      context.moveTo(100,100);
+      context.lineTo(300,300);
+      context.lineTo(100,500);
+      context.lineWidth = 5;
+      context.strokeStyle = "#333366";
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(300, 100);
+      context.lineTo(500, 300);
+      context.lineTo(300, 500);
+      context.lineWidth = 5;
+      context.strokeStyle = "#ff5f5f";
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(500, 100);
+      context.lineTo(700, 300);
+      context.lineTo(500, 500);
+      context.width = 5;
+      context.strokeStyle = "#f9e75e";
+      context.stroke();
+    }
+  </script>
+</body>
+</html>

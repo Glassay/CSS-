@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>优化绘制矩形的方法</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+      <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+        你的浏览器不支持 canvas , 快换个吧！
+      </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+
+      drawRect(context, 150, 50, 50, 50, "#fbffa8", 5, "#74dac6");
+      drawRect(context, 250, 50, 50, 50, "#ff5f5f", 5, "#f9e75e");
+      drawRect(context, 350, 50, 50, 50, "#ffe2e2", 5, "#bad7df");
+      drawRect(context, 450, 50, 50, 50, "#ffa35f", 5, "#c4ffdd");
+    }
+
+    function drawRect(ctx, x, y, height, width, fillColor, borderWidth, borderColor) {
+      ctx.beginPath();
+
+      // canvas 已经为我们提供了常用的绘制矩形的方法 rect;
+      ctx.rect(x, y, width, height);
+
+      ctx.lineWidth = borderWidth;
+      ctx.strokeStyle = borderColor;
+      ctx.fillStyle = fillColor;
+
+      ctx.fill();
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
