@@ -10,9 +10,9 @@
 </head>
 <body>
   <div id="canvas-wrap">
-      <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
-        你的浏览器不支持 canvas , 快换个吧！
-      </canvas>
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
   </div>
   <script>
     window.onload = function() {
@@ -21,14 +21,7 @@
       canvas.height = 600;
       var context = canvas.getContext('2d');
 
-      drawRect(context, 150, 50, 50, 50, "#fbffa8", 5, "#74dac6");
-      drawRect(context, 180, 80, 50, 50, "#ff5f5f", 5, "#f9e75e");
-      drawRect(context, 210, 110, 50, 50, "#ffe2e2", 5, "#bad7df");
-      drawRect(context, 240, 140, 50, 50, "#ffa35f", 5, "#c4ffdd");
-      drawRect(context, 270, 170, 50, 50, "#fbffa8", 5, "#74dac6");
-      drawRect(context, 300, 200, 50, 50, "#ff5f5f", 5, "#f9e75e");
-      drawRect(context, 330, 230, 50, 50, "#ffe2e2", 5, "#bad7df");
-      drawRect(context, 360, 260, 50, 50, "#ffa35f", 5, "#c4ffdd");
+      drawRect(context, 10, 10, 100, 500, '#fdffab', 5, '#b8e4c9' );
     }
 
     function drawRect(ctx, x, y, height, width, fillColor, borderWidth, borderColor) {

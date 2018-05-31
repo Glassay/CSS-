@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>线条的属性之 lineCap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+
+      context.lineWidth = 50;
+      context.strokeStyle = '#a8e6cf';
+
+      // lineCap = 'butt', 默认值, 没有边缘(帽子)
+      context.beginPath();
+      context.moveTo(100, 100);
+      context.lineTo(700, 100);
+      context.lineCap = 'butt';
+      context.stroke();
+
+      // lineCap = 'round', 线段边缘(帽子)为以线段宽为直径的半圆
+      context.beginPath();
+      context.moveTo(100, 300);
+      context.lineTo(700, 300);
+      context.lineCap = 'round';
+      context.stroke();
+
+      // lineCap = 'square', 线段边缘(帽子)为以线段宽为长, 线段1/2宽为宽的矩形
+      context.beginPath();
+      context.moveTo(100, 500);
+      context.lineTo(700, 500);
+      context.lineCap = 'square';
+      context.stroke();
+
+      context.lineWidth = 3;
+      context.strokeStyle = '#000';
+
+      context.beginPath();
+      context.moveTo(100, 0);
+      context.lineTo(100, 600);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(700, 0);
+      context.lineTo(700, 600);
+      context.stroke();
+    }
+  </script>
+</body>
+</html>

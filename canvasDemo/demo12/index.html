@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>绘制颜色不同的折线</title>
+  <title>线条的隐藏属性之 context.lineJoin = 'miter'</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="main.js"></script>
@@ -17,32 +17,38 @@
   <script>
     window.onload = function() {
       var canvas = document.getElementById('canvas');
-      canvas.width = 800;
+      canvas.width = 1000;
       canvas.height = 600;
       var context = canvas.getContext('2d');
 
-      context.beginPath(); // 避免重新绘制
-      context.moveTo(100,100);
-      context.lineTo(300,300);
-      context.lineTo(100,500);
-      context.lineWidth = 5;
-      context.strokeStyle = "#333366";
+      context.lineWidth = 50;
+
+      // lineJoin = 'miter'后, 将获得一个隐藏属性 miterLimit
+      context.beginPath();
+      context.moveTo(100, 100);
+      context.lineTo(300, 300);
+      context.lineTo(100, 500);
+      context.lineJoin = 'miter';
+      context.miterLimit = 10;
+      context.strokeStyle = '#ef7b7b';
       context.stroke();
 
       context.beginPath();
-      context.moveTo(300, 100);
+      context.moveTo(300, 200);
       context.lineTo(500, 300);
-      context.lineTo(300, 500);
-      context.lineWidth = 5;
-      context.strokeStyle = "#ff5f5f";
+      context.lineTo(300, 400);
+      context.lineJoin = 'miter';
+      context.miterLimit = 10;
+      context.strokeStyle = '#ffa35f';
       context.stroke();
 
       context.beginPath();
-      context.moveTo(500, 100);
-      context.lineTo(700, 300);
-      context.lineTo(500, 500);
-      context.width = 5;
-      context.strokeStyle = "#f9e75e";
+      context.moveTo(500, 290);
+      context.lineTo(800, 300);
+      context.lineTo(500, 310);
+      context.lineJoin = 'miter';
+      context.miterLimit = 10;
+      context.strokeStyle = '#97de95';
       context.stroke();
     }
   </script>

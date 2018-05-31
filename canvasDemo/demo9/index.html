@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>绘制矩形环</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+
+      context.beginPath();
+      context.rect(0, 0, 800, 600);
+      context.fillStyle = "#e9fadd";
+
+      context.fill();
+
+      for(var i=0; i<20; i++) {
+        drawWhiteRect(context, 200 + i * 10, 100 + i * 10, 400 - i * 20, 400 - i * 20);
+        drawBlackRect(context, 205 + i * 10, 105 + i * 10, 390 - i * 20, 390 - i * 20);
+      }
+
+      context.beginPath();
+      context.rect(395, 295, 10, 10);
+      context.fillStyle = "black";
+      context.lineWidth = 5;
+
+      context.fill();
+      context.stroke();
+    }
+
+    function drawWhiteRect(ctx, x, y, height, width) {
+      ctx.beginPath();
+      ctx.rect(x, y, height, width);
+
+      ctx.lineWidth = 2;
+      ctx.storkeStyle = 'white';
+
+      ctx.stroke();
+    }
+
+    function drawBlackRect(ctx, x, y, height, width) {
+      ctx.beginPath();
+      ctx.rect(x, y, height, width);
+
+      ctx.lineWidth = 5;
+      ctx.storkeStyle = 'black';
+
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>绘制颜色不同的折线</title>
+  <title>线条的属性之 lineJoin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="main.js"></script>
@@ -21,28 +21,33 @@
       canvas.height = 600;
       var context = canvas.getContext('2d');
 
-      context.beginPath(); // 避免重新绘制
-      context.moveTo(100,100);
-      context.lineTo(300,300);
-      context.lineTo(100,500);
-      context.lineWidth = 5;
-      context.strokeStyle = "#333366";
+      context.lineWidth = 20;
+
+      // lineJoin = 'miter', 外边缘默认值自动延伸至相交
+      context.beginPath();
+      context.moveTo(100, 100);
+      context.lineTo(300, 300);
+      context.lineTo(100, 500);
+      context.lineJoin = 'miter';
+      context.strokeStyle = '#ef7b7b';
       context.stroke();
 
+      // lineJoin = 'bevel', 连接处是外对角线相连
       context.beginPath();
       context.moveTo(300, 100);
       context.lineTo(500, 300);
       context.lineTo(300, 500);
-      context.lineWidth = 5;
-      context.strokeStyle = "#ff5f5f";
+      context.lineJoin = 'bevel';
+      context.strokeStyle = '#ffa35f';
       context.stroke();
 
+      // lineJoin = 'round', 连接处是一个圆
       context.beginPath();
       context.moveTo(500, 100);
       context.lineTo(700, 300);
       context.lineTo(500, 500);
-      context.width = 5;
-      context.strokeStyle = "#f9e75e";
+      context.lineJoin = 'round';
+      context.strokeStyle = '#97de95';
       context.stroke();
     }
   </script>
