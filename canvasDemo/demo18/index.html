@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2048界面</title>
+  <style>
+    body {
+      background: url("../assets/images/bg3.jpg") repeat
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    // 标准圆弧： arc()
+    // 复杂圆弧： arcTo()
+    // 二次贝塞尔曲线： quadraticCurveTo()
+    // 三次贝塞尔曲线： bezierCurveTo()
+    window.onload = function() {
+      var canvas = document.getElementById("canvas");
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext("2d");
+
+      context.fillStyle = "#fff";
+      context.fillRect(0, 0, 800, 600);
+      drawRoundRect(context, 200, 100, 400, 400, 5);
+      context.strokeStyle = "#000";
+      context.stroke();
+
+      for(var i = 1; i <= 4; i++){
+        for(var j = 1; j <= 4; j++){
+          console.log(`坐标${i}:`, 200 + 16 * i + 80 * (i - 1), 100 + 16 * j + 80 * (j - 1));
+          drawRoundRect(context, 200 + 16 * i + 80 * (i - 1), 100 + 16 * j + 80 * (j - 1), 80, 80, 5);
+          context.fillStyle = "#fbd685";
+          context.strokeStyle = "#f85959";
+          context.stroke();
+          context.fill();
+        }
+      }
+    }
+    function drawRoundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.arc(x + radius, y + radius, radius, Math.PI, Math.PI * 1.5);
+      ctx.lineTo(x + width - radius, y);
+      ctx.arc(x + width - radius, y + radius, radius, Math.PI * 1.5, Math.PI * 2);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.arc(x + width - radius, y + height - radius, radius, 0, Math.PI * 0.5);
+      ctx.lineTo(x + radius, y + height);
+      ctx.arc(x + radius, y + height - radius, radius, Math.PI * 0.5, Math.PI);
+      ctx.closePath();
+    }
+  </script>
+</body>
+</html>

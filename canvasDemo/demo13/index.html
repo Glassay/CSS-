@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>填充颜色之线性渐变</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      var context = canvas.getContext('2d');
+      
+      context.rect(200, 100, 400, 400);
+
+      // 添加渐变线的方向, 前两个值为起始点, 后两个值为终止点
+      var grd = context.createLinearGradient(200, 300, 600, 300);
+
+      // 添加颜色断点, 最大值为1, 第一个值为各种颜色所占的比例
+      grd.addColorStop(0, '#000'); // 红
+      grd.addColorStop(0.5, '#fff'); // 黄
+      grd.addColorStop(1, '#000'); // 紫
+
+      // 应用渐变
+      context.fillStyle = grd;
+
+      context.fill();
+    }
+  </script>
+</body>
+</html>
