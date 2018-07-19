@@ -30,6 +30,12 @@
       context.fillStyle = "#fff"
       context.fillRect(0, 0, 800, 600)
       // context.arc(400, 300, 300, 0, Math.PI * 2, true)
+      // 参数意义:
+      // 圆弧圆心 (400, 300)
+      // 圆弧半径 300
+      // 起始弧度 0
+      // 终止弧度 Math.PI * 2
+      // 弧度方向 true 逆时针, false(默认值) 顺时针
       drawRoundRect(context, 200, 100, 400, 400, 50);
       context.strokeStyle = "#000";
       context.stroke();
