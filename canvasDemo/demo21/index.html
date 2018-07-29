@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绘制微信聊天界面</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto">
+      你的浏览器不支持 canvas , 快换个吧！
+    </canvas>
+  </div>
+  <script>
+    // 标准圆弧： arc()
+    // 复杂圆弧： arcTo(x1, y1, x2, y2, radious) 坐标1和坐标2, 再加上之前的已存在的端点相交, 根据切点形成圆弧
+    // 二次贝塞尔曲线： quadraticCurveTo()
+    // 三次贝塞尔曲线： bezierCurveTo()
+    window.onload = function() {
+      var canvas = document.getElementById("canvas");
+      canvas.width = 375;
+      canvas.height = 667;
+      var context = canvas.getContext("2d");
+
+      // 屏幕
+      context.beginPath();
+      context.rect(0, 0, 375, 667);
+      context.fillStyle = "rgb(236, 236, 236)";
+      context.fill();
+
+      // 状态栏
+      context.beginPath();
+      context.rect(0, 0, 375, 20);
+      context.fillStyle = "rgb(44, 44, 44)";
+      context.fill();
+      context.beginPath();
+      var statusBar = new Image();
+      statusBar.src = "../assets/wechat/bar.png";
+      statusBar.onload = function() {
+        context.drawImage(statusBar, 5, 2);
+      }
+
+      // 导航栏
+      context.beginPath();
+      context.rect(0, 20, 375, 43);
+      context.fillStyle = "rgb(44, 44, 44)";
+      context.fill();
+      // 返回按钮
+      context.beginPath();
+      var back = new Image();
+      back.src = "../assets/wechat/back.png";
+      back.onload = function() {
+        context.drawImage(back, 0, 16);
+      }
+      // 右侧人型图标
+      context.beginPath();
+      var person = new Image();
+      person.src = "../assets/wechat/person.png";
+      person.onload = function() {
+        context.drawImage(person, 336, 16);
+      }
+      // 微信字样
+      context.beginPath();
+      context.font = "lighter 16px Heiti SC";
+      context.fillStyle = "white";
+      context.textAlign = "left";
+      context.textBaseline = "top";
+      context.fillText("微信", 26, 32);
+      // 中间的昵称
+      context.beginPath();
+      context.font = "lighter 18px STHeitiSC-Light";
+      context.fillStyle = "white";
+      context.textAlign = "left";
+      context.textBaseline = "top";
+      context.fillText("柏拉熊", 158, 32);
+
+      context.beginPath();
+      context.rect(0, 63, 375, 556);
+      context.fillStyle = "rgb(236, 236, 236)";
+      context.fill();
+
+      // 底部输入框
+      context.beginPath();
+      context.rect(0, 619, 375, 48);
+      context.fillStyle = "rgb(219, 219, 219)";
+      context.fill();
+      var inputBar = new Image();
+      inputBar.src = "../assets/wechat/inputbar.png";
+      inputBar.onload = function() {
+        context.drawImage(inputBar, 5, 619);
+      }
+    }
+  </script>
+</body>
+</html>
