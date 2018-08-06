@@ -1,0 +1,105 @@
+body {
+  background-color: gray;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px;
+  min-height: 300px;
+  flex: 1 0 40%;
+}
+
+.feed {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feed ul,
+.feed li {
+  display: contents; /* 新的属性，该元素自身将被忽略而由其子元素替换其在 DOM 树中的位置*/
+}
+
+.chat {
+  background-color: #fff;
+  border: 10px solid #000;
+  bottom: 0;
+  font-size: 10px;
+  position: fixed;
+  right: 0;
+  width: 300px;
+  z-index: 100;
+  contain: paint;
+}
+
+.chat:focus-within .messages {
+  max-height: 300px;
+  padding: 10px;
+}
+
+.chat:focus-within ~ .container {
+  filter: blur(100px);
+}
+
+.messages {
+  border-bottom: 5px solid #000;
+  overflow: auto;
+  padding: 0;
+  max-height: 0;
+  overscroll-behavior: none; /* 新的特性，阻止滚动链接（Scroll Chaining）*/
+  transition: max-height 500ms;
+}
+
+.message--mine {
+  background: #000;
+  margin-left: 20%;
+  margin-right: 0;
+}
+
+.message--mine:hover::after {
+  background: #000;
+  color: #fff;
+  content: attr(data-timestamp);
+  left: 0;
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.message {
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+  margin: 0 20% 10px 0;
+  padding: 10px;
+}
+
+.messages li:last-child .message {
+  margin-bottom: 0;
+}
+
+.input {
+  border: none;
+  display: block;
+  padding: 10px;
+  width: 100%;
+}
+
+.prompt {
+  line-height: 2em;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  text-align: right;
+  transition: max-height 500ms;
+}
+
+.input:not(:placeholder-shown) + .prompt {
+  max-height: 2em;
+}
